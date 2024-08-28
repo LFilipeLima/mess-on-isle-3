@@ -14,7 +14,6 @@ console.log(image)
 
 image.onload =  () => {
     context.drawImage(image,0,0);
-    
 }
 
 
@@ -26,8 +25,8 @@ image.onload =  () => {
 
 
 function loop(){
-    requestAnimationFrame(loop)
-    
+    requestAnimationFrame(loop);
+    generateImage();
 }
 
 loop()
