@@ -10,14 +10,25 @@ context.fillRect(0,0,canvas.width,canvas.height);
 
 const image= new Image()
 image.src = 'imagens/MAP.png'
-console.log(image)
+
+const playerImage = new Image();
+playerImage.src ='imagens/spr_tom.png'
+
 
 image.onload =  () => {
-    context.drawImage(image,0,0);
+    context.drawImage(image,0,0) //Renderiza a imagem do mapa
+    context.drawImage(playerImage,
+        0,
+        0,
+        playerImage.width/4,
+        playerImage.height/4,
+        canvas.width/2 - playerImage.width/2,
+        canvas.height/2-playerImage.height/2,
+        playerImage.width/4,
+        playerImage.height/4,) // Renderiza o player
 }
 
 
-            
 
     
     
@@ -26,7 +37,6 @@ image.onload =  () => {
 
 function loop(){
     requestAnimationFrame(loop);
-    generateImage();
+    image.onload()
 }
-
 loop()
