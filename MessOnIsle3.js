@@ -1,8 +1,13 @@
 const canvas = document.querySelector("#canvas");
 const context = canvas.getContext('2d');
-
+const collisonMap = []
+for (let i = 0;i<collison.length;i+=50){
+ collisonMap.push(collison.slice(i,70+i))
+}
+console.log(collisonMap)
 canvas.width = 800
 canvas.height = 480
+
 
 
 context.fillStyle='white';
@@ -12,10 +17,10 @@ const image= new Image()
 image.src = 'imagens/MAP.png'
 
 const playerImage = new Image();
-playerImage.src ='imagens/spr_tom.png'
+playerImage.src = 'imagens/spr_tom.png'
 
-
-image.onload =  () => {
+image.onload =  () => 
+{
     context.drawImage(image,0,0) //Renderiza a imagem do mapa
     context.drawImage(playerImage,
         0,
@@ -28,15 +33,12 @@ image.onload =  () => {
         playerImage.height/4,) // Renderiza o player
 }
 
-
-
-    
-    
     
 
 
 function loop(){
     requestAnimationFrame(loop);
-    image.onload()
+    image.onload();
+    
 }
 loop()
