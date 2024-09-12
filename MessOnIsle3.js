@@ -16,7 +16,6 @@ const background = new Sprite({
 })
 
 
-
 for (let i = 0;i<collison.length;i+=50){
  collisonMap.push(collison.slice(i,70+i))
 }
@@ -70,14 +69,16 @@ playerImage.src= "imagens/spr_tom.png"
 
 
 function loop(){
-    background.draw();
     window.requestAnimationFrame(loop);
     renderizaMapa();
-    playerImage.onload()
     player.movePlayer();
-
+    playerImage.onload()
+    background.draw()
 
     
 }
 loop();
+
+
+
 
