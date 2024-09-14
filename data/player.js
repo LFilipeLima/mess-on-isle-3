@@ -35,6 +35,21 @@ class Player{
             case "d":
                 keys.d.pressed = true
                 break
+        }})
+        window.addEventListener('keyup',(e) =>{ //função que identifica o teclado e passa a tecla 
+            switch(e.key){
+                case "w":
+                   keys.w.pressed = false
+                    break
+                case "s":
+                    keys.s.pressed = false
+                    break
+                case "a":
+                    keys.a.pressed = false
+                    break
+                case "d":
+                    keys.d.pressed = false
+                    break
 
         }                      // pelo parametro "e" 
     })

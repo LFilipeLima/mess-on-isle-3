@@ -1,13 +1,14 @@
 class Sprite{
     constructor({position,velocity},image){
         this.position = position
-        this.image = image
-
-        this.canvas = document.querySelector("#canvas");
-        this.context = canvas.getContext('2d');
+        this.image = image  
+        console.log(this.image)
     }
     draw(){
-          this.context.drawImage(image,0,0);
+       const imagem = new Image()
+        imagem.src = "imagens/TESTE.png";
+          context.drawImage(imagem,this.position.x,this.position.y);
+          
           
         
     }
