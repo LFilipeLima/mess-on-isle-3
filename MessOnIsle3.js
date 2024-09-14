@@ -50,21 +50,6 @@ const keys={
         pressed:false
     }
 }
-playerImage = new Image() 
-playerImage.src= "imagens/spr_tom.png"
-
-       
-       playerImage.onload = () =>{
-        context.drawImage(playerImage,
-            0,
-            0,
-           playerImage.width/4,
-           playerImage.height/4,
-            canvas.width/2 -playerImage.width/2,
-            canvas.height/2-playerImage.height/2,
-           playerImage.width/1.5,
-           playerImage.height/1.5 ,) // Renderiza o player
-    }
 
 
 
@@ -73,18 +58,18 @@ function loop(){
     player.movePlayer();
     background.draw()
     if(keys.w.pressed){
-       background.position.y+=3
+       background.position.y+=33
     }
     else if(keys.s.pressed){
-       background.position.y-=3
+       background.position.y-=33
     }
     else if(keys.a.pressed){
-       background.position.x+=3
+       background.position.x+=32
     }
     else if(keys.d.pressed){
-       background.position.x-=3
+       background.position.x-=32
     }   
-    playerImage.onload();
+    player.draw();
 
     
 }
