@@ -4,7 +4,6 @@ class Player{
    this.y = 0
    this.playerImage = new Image() 
    this.playerImage.src= "imagens/spr_tom.png"
-
    }
    draw(){
         this.playerImage.onload =() =>{

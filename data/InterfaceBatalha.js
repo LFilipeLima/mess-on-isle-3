@@ -1,8 +1,12 @@
 
+
+// Cria uma instância de Personagens
+const fogo = new Personagens('fogo','Bola de fogo','Furia',1,4,100);
+fogo.criarPersonagem(); // cria o personagem
+
+
 //Cria o "retangulo" da interface de batalha
 
-var danoAtaque1=4
-var danoAtaque2=4
 var ataque2="blue";
 var ataque1="red";  
 var vidaInimiga=100;
@@ -46,32 +50,29 @@ window.addEventListener('click', function(e){
     const x = e.clientX;
     const y = e.clientY;
     //0,450,255,100
-    if(x>300&&x<555&&y>450&&y<550) {
-        dano = 0;
+    if(x>300&&x<555&&y>450&&y<550){//primeiro ataque
+        dano = fogo.dano1;
         vidaInimiga-=dano
     }
-    if(x>555&&x<810&&y>450&&y<550) {
-        dano =0;
+    if(x>555&&x<810&&y>450&&y<550) { //segundo ataque
+        dano =fogo.dano2;
         vidaInimiga-=dano
         
     }
-    if(x>810&&x<1020&&y>450&&y<550) {
-        console.log('Dano')
-        ;
-    }
-window.addEventListener('mousemove', function(e){
+    
+window.addEventListener('mousemove', function(e){ //fica amarelo se passar o mouse em
     const x = e.clientX;
     const y = e.clientY;
     if(x>300&&x<585&&y>450&&y<550) {
         ataque1 = context.fillStyle='yellow';
         ataque2 = context.fillStyle='blue';
-        dano=0;
+        dano=fogo.dano1;
        
     }
     else if(x>585&&x<810&&y>450&&y<550) {
         ataque2 = context.fillStyle='yellow';
         ataque1 = context.fillStyle='red';
-        dano = 0;
+        dano = fogo.dano2;
     }
     else{
         ataque1 = context.fillStyle='red';
@@ -92,5 +93,5 @@ function drawBarraDeVida(){
     context.fillRect(800,400,300,40);
     context.fillStyle='black';
     context.font = '30px Arial';
-    context.fillText('Vida: 1000', 850,430);
+    context.fillText('Vida:'+fogo.vida, 850,430);
 }

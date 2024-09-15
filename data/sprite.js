@@ -1,5 +1,5 @@
 class Sprite {
-    constructor({
+    constructor ({
       position,
       velocity,
       image,

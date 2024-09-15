@@ -51,7 +51,7 @@ const keys={
 
 canvas.width = 1020
 canvas.height = 550
-const batalha = true
+const batalha = true // ativa a batalha
 
 function loop(){
     window.requestAnimationFrame(loop);

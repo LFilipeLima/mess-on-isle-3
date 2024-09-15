@@ -1,3 +1,6 @@
+//
+
+
 //consts imagens:
 const batteBackgroundImage = new Image();
 batteBackgroundImage.src='imagens/battleBackground.png';
@@ -45,12 +48,11 @@ const battleBackground = new Sprite({ //cria o sprite da imagem do cenario de ba
 //loop da batalha
 function battleLoop(){
     
-    
     window.requestAnimationFrame(battleLoop);
     battleBackground.draw(); //desenha o cenario de batalha
     emby.draw(); //desenha o sprite do ebmy    
     draglle.draw(); //desenha o sprite do draglle
-    interfaceDaBatalha(); //desenha a interface de batalha
+    interfaceDaBatalha(); //desenha a interface de batalh
 
 }
 
