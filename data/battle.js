@@ -48,7 +48,7 @@ function battleLoop(){
     
     window.requestAnimationFrame(battleLoop);
     battleBackground.draw(); //desenha o cenario de batalha
-    emby.draw(); //desenha o sprite do mike wazowski    
+    emby.draw(); //desenha o sprite do ebmy    
     draglle.draw(); //desenha o sprite do draglle
     interfaceDaBatalha(); //desenha a interface de batalha
 

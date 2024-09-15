@@ -1,18 +1,20 @@
 
 //Cria o "retangulo" da interface de batalha
+
+var danoAtaque1=4
+var danoAtaque2=4
 var ataque2="blue";
 var ataque1="red";  
 var vidaInimiga=100;
 var vida=100
-var dano=""
+var dano=0;
+
 function interfaceDaBatalha(){
     drawBarraDeAtaques();
     drawBarraDeVidaInimiga();
     drawBarraDeVida();
 
 }
-
-    
 
 function drawBarraDeAtaques(){
     context.fillStyle='white';
@@ -23,13 +25,14 @@ function drawBarraDeAtaques(){
     context.fillRect(0,450,255,100);
     context.fillStyle='black';
     context.font = '30px Arial';
-    context.fillText('Ataque 1', 50, 500);
+    context.fillText("Bola de fogo", 50, 500);
+   
     //botao do segundo ataque:
     context.fillStyle=ataque2;
     context.fillRect(255,450,255,100);
     context.fillStyle='black';
     context.font = '30px Arial';
-    context.fillText('Ataque 2', 305, 500);
+    context.fillText('furia', 305, 500);
     //botao do terceiro Tipo do ataque:
     context.fillStyle='white';
     context.fillRect(510,450,255,100);
@@ -44,10 +47,13 @@ window.addEventListener('click', function(e){
     const y = e.clientY;
     //0,450,255,100
     if(x>300&&x<555&&y>450&&y<550) {
-        console.log('Ataque 1')
+        dano = 0;
+        vidaInimiga-=dano
     }
     if(x>555&&x<810&&y>450&&y<550) {
-        console.log('Ataque 2')
+        dano =0;
+        vidaInimiga-=dano
+        
     }
     if(x>810&&x<1020&&y>450&&y<550) {
         console.log('Dano')
@@ -59,18 +65,18 @@ window.addEventListener('mousemove', function(e){
     if(x>300&&x<585&&y>450&&y<550) {
         ataque1 = context.fillStyle='yellow';
         ataque2 = context.fillStyle='blue';
-        dano='fogo'
+        dano=0;
        
     }
     else if(x>585&&x<810&&y>450&&y<550) {
         ataque2 = context.fillStyle='yellow';
         ataque1 = context.fillStyle='red';
-        dano="agua"
+        dano = 0;
     }
     else{
         ataque1 = context.fillStyle='red';
         ataque2 = context.fillStyle='blue';
-        dano=""
+        dano=0
     }
     
 })})
@@ -79,7 +85,7 @@ function drawBarraDeVidaInimiga(){
     context.fillRect(0,0,200,50);
     context.fillStyle='black';
     context.font = '30px Arial';
-    context.fillText('Vida: 100', 50, 40);
+    context.fillText('Vida:'+vidaInimiga, 50, 40);
 }
 function drawBarraDeVida(){
     context.fillStyle='white';
