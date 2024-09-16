@@ -63,13 +63,13 @@ window.addEventListener('click', function(e){
 window.addEventListener('mousemove', function(e){ //fica amarelo se passar o mouse em
     const x = e.clientX;
     const y = e.clientY;
-    if(x>300&&x<585&&y>450&&y<550) {
+    if(x>300&&x<705&&y>450&&y<550) {
         ataque1 = context.fillStyle='yellow';
         ataque2 = context.fillStyle='blue';
         dano=fogo.dano1;
        
     }
-    else if(x>585&&x<810&&y>450&&y<550) {
+    else if(x>585&&x<960&&y>450&&y<550) {
         ataque2 = context.fillStyle='yellow';
         ataque1 = context.fillStyle='red';
         dano = fogo.dano2;

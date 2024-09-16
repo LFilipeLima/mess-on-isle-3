@@ -1,7 +1,6 @@
 class Sprite {
     constructor ({
       position,
-      velocity,
       image,
       frames = { max: 1, hold: 10 },
       sprites,
@@ -10,6 +9,7 @@ class Sprite {
       scale = 1
     }) {
       this.position = position
+      //carrega a imagem e calcula os frames dela (recomendado:4 frames)
       this.image = new Image()
       this.frames = { ...frames, val: 0, elapsed: 0 }
       this.image.onload = () => {
@@ -32,7 +32,7 @@ class Sprite {
         this.position.x + this.width / 2,
         this.position.y + this.height / 2
       )
-      context.rotate(this.rotation)
+      context.rotate(this.rotation) //rotaciona a imagem
       context.translate(
         -this.position.x - this.width / 2,
         -this.position.y - this.height / 2
@@ -41,7 +41,7 @@ class Sprite {
   
       const crop = {
         position: {
-          x: this.frames.val * (this.width / this.scale),
+          x: this.frames.val * (this.width / this.scale), //divida a imagem por pel
           y: 0
         },
         width: this.image.width / this.frames.max,
