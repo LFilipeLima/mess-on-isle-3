@@ -51,7 +51,7 @@ const keys={
 
 canvas.width = 1020
 canvas.height = 550
-const batalha = true // ativa a batalha
+const batalhao = true // ativa a batalha
 
 function loop(){
     window.requestAnimationFrame(loop);
@@ -70,7 +70,7 @@ function loop(){
        background.position.x-=3
     }   
     player.draw();
-    if (batalha){
+    if (batalhao){
         battleLoop();
 
     }
