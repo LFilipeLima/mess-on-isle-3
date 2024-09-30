@@ -1,8 +1,5 @@
 
 
-// Cria uma instância de Personagens
-
-
 //Cria o "retangulo" da interface de batalha
 class interfaceBatalha{
     constructor (nAt1,nAt2,danAt1,danAt2,v){

@@ -1,6 +1,7 @@
 // const dos status dos personagens:
-const fogo = new Personagens('fogo','Bola de fogo','Furia',1,4,1010);
+const fogo = new Personagens('fogo','Bola de fogo','Furia',1,4,100);
 fogo.criarPersonagem(); // cria o personagem
+const dragao = new Personagens('Draglle','Bola de fogo','Voar',10,20,1010)
 
 
 //consts imagens:
@@ -44,34 +45,60 @@ const battleBackground = new Sprite({ //cria o sprite da imagem do cenario de ba
     image : batteBackgroundImage,
     
 })
+
 const batalhaUI = new interfaceBatalha( fogo.ataque1,fogo.ataque2,fogo.dano1,fogo.dano2,fogo.vida);
 //loop da batalha
 function battleLoop(){
-    
+    if(batalhaUI.vida <=0){
+        let telaDeDerrota = new Image();
+        telaDeDerrota.src = 'imagens/teste.jpg'
+        let derrota = new Sprite({
+            position:{
+                x:0,y:0
+            },
+            image:telaDeDerrota
+            
+        })
+        derrota.draw();
+    }
     window.requestAnimationFrame(battleLoop);
     battleBackground.draw(); //desenha o cenario de batalha
     emby.draw(); //desenha o sprite do ebmy    
     draglle.draw(); //desenha o sprite do draglle
     batalha();
+    
    
 }
+
 function batalha(){
     batalhaUI.drawBarraDeAtaques();
     batalhaUI.drawBarraDeVidaInimiga();
     batalhaUI.drawBarraDeVida();
 };
 
+function ataqueInimigo(){
+    let ataque=Math.floor(Math.random()*2)
+    if (ataque == 1){
+       batalhaUI.vida -=dragao.dano1
+    }
+    else if(ataque==2){
+        batalhaUI.vida-= dragao.dano2
+}}
+
 window.addEventListener('click', function(e){
     const x = e.clientX;
     const y = e.clientY;
 
-    if(x>300&&x<555&&y>450&&y<550){//primeiro ataque
-        batalhaUI.dano = batalhaUI.danAt1;
-        batalhaUI.vidaInimiga-=batalhaUI.dano
+    if(x>450&&x<705&&y>450&&y<550){//primeiro ataque
+        batalhaUI.dano =fogo.dano1;
+        batalhaUI.vidaInimiga-=fogo.dano1;
+        ataqueInimigo();
+      
     }
-    if(x>555&&x<810&&y>450&&y<550) { //segundo ataque
-        batalhaUI.dano =batalhaUI.danAt2;
-        batalhaUI.vidaInimiga-=batalhaUI.dano
+    if(x>705&&x<1000&&y>450&&y<550) { //segundo ataque
+        batalhaUI.dano = fogo.dano1;
+        batalhaUI.vidaInimiga-=fogo.dano2;
+        ataqueInimigo();
         
 }
 })
@@ -79,16 +106,19 @@ window.addEventListener('click', function(e){
 window.addEventListener('mousemove', function(e){ //fica amarelo se passar o mouse em
     const x = e.clientX;
     const y = e.clientY;
-    if(x>300&&x<705&&y>450&&y<550) {
+    if(x>450&&x<705 &&y>450&&y<550) {
         batalhaUI.ataque1 = context.fillStyle='yellow';
         batalhaUI.ataque2 = context.fillStyle='blue';
-        batalhaUI.nomeDano=""+batalhaUI.danAt1;
+        batalhaUI.nomeDano=""+fogo.dano1;
+        
+        
+
        
     }
-    else if(x>585&&x<960&&y>450&&y<550) {
+    else if(x>705&&x<1000&&y>450&&y<550) {
         batalhaUI.ataque2 = context.fillStyle='yellow';
         batalhaUI.ataque1 = context.fillStyle='red';
-        batalhaUI.nomeDano = ""+batalhaUI.danAt2;
+        batalhaUI.nomeDano = ""+fogo.dano2;
     }
     else{
         batalhaUI.ataque1 = context.fillStyle='red';
