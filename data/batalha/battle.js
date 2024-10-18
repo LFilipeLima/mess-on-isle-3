@@ -49,26 +49,27 @@ const battleBackground = new Sprite({ //cria o sprite da imagem do cenario de ba
 const batalhaUI = new interfaceBatalha( fogo.ataque1,fogo.ataque2,fogo.dano1,fogo.dano2,fogo.vida);
 //loop da batalha
 function battleLoop(){
-    if(batalhaUI.vida <=0){
-        let telaDeDerrota = new Image();
-        telaDeDerrota.src = 'imagens/teste.jpg'
-        let derrota = new Sprite({
-            position:{
-                x:0,y:0
+    if(batalhaUI.vida<0){
+        window.requestAnimationFrame(battleLoop)
+        let teste = new Image();
+        teste.src = "imagens/teste.jpg"
+        let TESTE = new Sprite({    position: {
+            x:0,
+            y:0,
             },
-            image:telaDeDerrota
-            
-        })
-        derrota.draw();
+            image : teste,})
+        TESTE.draw();
     }
+    else{
     window.requestAnimationFrame(battleLoop);
     battleBackground.draw(); //desenha o cenario de batalha
     emby.draw(); //desenha o sprite do ebmy    
     draglle.draw(); //desenha o sprite do draglle
-    batalha();
-    
-   
+    batalha();}
 }
+
+   
+
 
 function batalha(){
     batalhaUI.drawBarraDeAtaques();
