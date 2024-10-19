@@ -12,7 +12,7 @@ const background = new Sprite({
       x: -1150,
       y:-350,
     },
-    image: image
+    imagem: "imagens/TESTE.png"
   })
 
 

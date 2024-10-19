@@ -16,7 +16,13 @@ class interfaceBatalha{
 }
 
 
-
+inimigoDerrotado(name){
+    context.fillStyle='white';
+    context.fillRect(0,0,1020,550);
+    context.fillStyle='black';
+    context.font = '30px Arial';
+    context.fillText(name+' Derrotado', 400, 200);
+}
 
 drawBarraDeAtaques(){
     context.fillStyle='white';
