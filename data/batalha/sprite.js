@@ -1,22 +1,24 @@
 class Sprite {
     constructor ({
-      position,
-      imagem,
+      posicao,
+      image,
       frames = { max: 1, hold: 10 },
       sprites,
-      animate = false, //Se a this.imagem possui frames
+      animate = false, //Se a this.image possui frames
       rotation = 0,
       scale = 1
-    }) {
-      this.posicao = position
-      //carrega a this.imagem e calcula os frames dela (recomendado:4 frames)
-      this.imagem = new Image();
+    }) { 
+      this.image = new Image(); 
+      
+      this.posicao = posicao
+      //carrega a this.image e calcula os frames dela (recomendado:4 frames)
+      
       this.frames = { ...frames, val: 0, elapsed: 0 } 
-      this.imagem.onload = () => {
-        this.width = (this.imagem.width / this.frames.max) * scale
-        this.height = this.imagem.height * scale
+      this.image.onload = () => {
+        this.width = (this.image.width / this.frames.max) * scale
+        this.height = this.image.height * scale
       }
-      this.imagem.src = imagem
+    this.image.src = image.src
   
       this.animate = animate
       this.sprites = sprites
@@ -32,7 +34,7 @@ class Sprite {
         this.posicao.x + this.width / 2,
         this.posicao.y + this.height / 2
       )
-      context.rotate(this.rotation) //rotaciona a this.imagem
+      context.rotate(this.rotation) //rotaciona a this.image
       context.translate(
         -this.posicao.x - this.width / 2,
         -this.posicao.y - this.height / 2
@@ -40,32 +42,32 @@ class Sprite {
       context.globalAlpha = this.opacity
   
       const crop = {
-        position: {
-          x: this.frames.val * (this.width / this.scale), //pega o frame da this.imagem( numero do frame * 
-                                                          //largura da this.imagem / escala)
+        posicao: {
+          x: this.frames.val * (this.width / this.scale), //pega o frame da this.image( numero do frame * 
+                                                          //largura da this.image / escala)
           y: 0
         },
-        width: this.imagem.width / this.frames.max,
-        height: this.imagem.height
+        width: this.image.width / this.frames.max,
+        height: this.image.height
       }
   
       const image = {
-        position: {
+        posicao: {
           x: this.posicao.x,
           y: this.posicao.y
         },
-        width: this.imagem.width / this.frames.max,
-        height: this.imagem.height
+        width: this.image.width / this.frames.max,
+        height: this.image.height
       }
   
       context.drawImage(
-        this.imagem,
-        crop.position.x,
-        crop.position.y,
+        this.image,
+        crop.posicao.x,
+        crop.posicao.y,
         crop.width,
         crop.height,
-        image.position.x,
-        image.position.y,
+        image.posicao.x,
+        image.posicao.y,
         image.width * this.scale,
         image.height * this.scale
       )

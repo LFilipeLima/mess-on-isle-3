@@ -38,36 +38,47 @@ class monstros extends Sprite{
             return false;
 }
     ataque(ataque,alvo,numeroDeSprites){
+        let rotation =1;
         switch(ataque.nome){
-            case 'teste':
-                const testeImage=new image();
-                testeImage.src='ataques/testeSprite.png';
+            case 'Fireball':
+                const testeImage=new Image();
+                testeImage.src='monstros/draggleSprite.png';
                 const teste = new Sprite({
-                    position: {
+                    posicao: {
                     x:this.posicao.x,
                     y:this.posicao.y,
                     },
                     image : testeImage,
                     frames:{
                         max:4,
-                        hold:10
-                    },
+                        hold:30
+                    },sprites:4,
                     animate:true,
                     rotation
                 })
-                numeroDeSprites.splice(1,0,teste)
-                gsap.to(alvo.posicao,{
-                    x:alvo.posicao.x+10,
-                    yoyo: true, //quando toma dano o alvo gira
-                    repetir:5,
-                    duracao:0.08
-                })
-                numeroDeSprites.splice(1,1); break
-        }
-    }
+                const animate = () => {
+                    if (teste.posicao.x != alvo.posicao.x || teste.posicao.y != alvo.posicao.y) {
+                        if (teste.posicao.x > alvo.posicao.x)
+                            teste.posicao.x -= 5;
+                        if (teste.posicao.y > alvo.posicao.y)
+                            teste.posicao.y -= 5;
+                        if (teste.posicao.x < alvo.posicao.x)
+                            teste.posicao.x += 5;
+                        if (teste.posicao.y < alvo.posicao.y)
+                            teste.posicao.y += 5;
+                    }
+                        teste.draw();
+
+                        
+                        requestAnimationFrame(animate)};animate();
+                        break
+        }; }
+        
+    
     desenhar(){
-        context.fillRect(this.posicao.x,this.posicao.y,this.width,this.width);
-        c.fiiStyle='rga(255,0,0,';
+        context.fiiStyle='rgba(255, 0, 0, 0)'
+        context.fillRect(this.posicao.x,this.posicao.y,this.width,this.height);
+       
         
     }
   getVida(){
