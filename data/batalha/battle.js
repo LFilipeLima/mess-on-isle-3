@@ -28,10 +28,23 @@ function battleLoop() {
     batalhaUI.drawBarraDeAtaques();
     emby.draw();
     draggle.draw();
-    emby.ataque(ataque.Fireball,draggle,renderizarSprites);
     
       
     
+    
+}
+window.addEventListener('click',(e)=>{
+    const x = e.clientX;
+    const y = e.clientY;
+    if(x>450&&x<705&&y>450&&y<550){//primeiro ataque
+        console.log("Primeiro Ataque")
+        emby.ataque(ataque.Fireball,draggle,4);
+      
+    }
+    if(x>705&&x<1000&&y>450&&y<550) { //segundo ataque
+        console.log("Segundo ataque")
+    }})
+function limparMapa(){
     
 }
 battleLoop();

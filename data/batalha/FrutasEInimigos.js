@@ -56,6 +56,7 @@ class monstros extends Sprite{
                     animate:true,
                     rotation
                 })
+                let parar = false
                 const animate = () => {
                     if (teste.posicao.x != alvo.posicao.x || teste.posicao.y != alvo.posicao.y) {
                         if (teste.posicao.x > alvo.posicao.x)
@@ -66,11 +67,15 @@ class monstros extends Sprite{
                             teste.posicao.x += 5;
                         if (teste.posicao.y < alvo.posicao.y)
                             teste.posicao.y += 5;
-                    }
-                        teste.draw();
+                       
+                    else{
+                        parar=true
+                    }}}
+                        if(parar != true){ 
+                            teste.draw();
 
-                        
-                        requestAnimationFrame(animate)};animate();
+                            requestAnimationFrame(animate);
+                            animate();};
                         break
         }; }
         
