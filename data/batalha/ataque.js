@@ -1,7 +1,7 @@
 const ataque={
      Fireball:{
         nome:'Fireball',
-        dano:20,
+        dano:210,
         tipo:'fogo',
         cor:'red'
      }

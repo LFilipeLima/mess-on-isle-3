@@ -1,3 +1,5 @@
+
+
 class monstros extends Sprite{
     constructor({
         posicao,
@@ -56,28 +58,29 @@ class monstros extends Sprite{
                     animate:true,
                     rotation
                 })
-                let parar = false
+                let continuar = true;
                 const animate = () => {
-                    if (teste.posicao.x != alvo.posicao.x || teste.posicao.y != alvo.posicao.y) {
+                    window.requestAnimationFrame(animate);
+                    
+                    if (teste.posicao.x < alvo.posicao.x || teste.posicao.y < alvo.posicao.y) {
                         if (teste.posicao.x > alvo.posicao.x)
                             teste.posicao.x -= 5;
                         if (teste.posicao.y > alvo.posicao.y)
                             teste.posicao.y -= 5;
                         if (teste.posicao.x < alvo.posicao.x)
                             teste.posicao.x += 5;
-                        if (teste.posicao.y < alvo.posicao.y)
-                            teste.posicao.y += 5;
-                       
-                    else{
-                        parar=true
-                    }}}
-                        if(parar != true){ 
-                            teste.draw();
-
-                            requestAnimationFrame(animate);
-                            animate();};
-                        break
-        }; }
+                        if (teste.posicao.y < alvo.posicao.y){
+                            teste.posicao.y += 5;}
+                        teste.draw();}
+                    else {
+                        continuar = false;
+                    }}
+                
+        ;if(continuar){
+            
+            animate();
+        }}
+}
         
     
     desenhar(){
