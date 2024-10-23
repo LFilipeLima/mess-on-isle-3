@@ -13,7 +13,8 @@ Dividir o inimigo em 3 niveis cada nivel mais forte
             animate:true,
             isEnemy:true, //todo inimigo é true!!!
             name:'mosquito',
-            ataque:[ataque.Waterfall,ataque.Fireball]    
+            attacks:[ataque.Waterfall,ataque.Fireball] ,
+            nivel:1  
         }
         //inserir a partir da daqui:
      }

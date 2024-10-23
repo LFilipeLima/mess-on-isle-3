@@ -21,6 +21,7 @@ class monstros extends Sprite{
             animate,
             rotation
         })
+        this.isEnemy = isEnemy
        if(nivel == 1 )
             this.vida=100;
         else if(nivel == 2)
@@ -39,12 +40,14 @@ class monstros extends Sprite{
         else
             return false;
 }
+
+
     ataque(ataque,alvo,numeroDeSprites){
         let rotation =1;
         switch(ataque.nome){
             case 'Fireball':
                 const testeImage=new Image();
-                testeImage.src='monstros/draggleSprite.png';
+                testeImage.src='/imagens/fireBall.jpg';
                 const teste = new Sprite({
                     posicao: {
                     x:this.posicao.x,
@@ -52,36 +55,62 @@ class monstros extends Sprite{
                     },
                     image : testeImage,
                     frames:{
-                        max:4,
-                        hold:30
+                        max:6,
+                        hold:10
                     },sprites:4,
                     animate:true,
                     rotation
                 })
-                let continuar = true;
-                const animate = () => {
-                    window.requestAnimationFrame(animate);
-                    
-                    if (teste.posicao.x < alvo.posicao.x || teste.posicao.y < alvo.posicao.y) {
-                        if (teste.posicao.x > alvo.posicao.x)
-                            teste.posicao.x -= 5;
-                        if (teste.posicao.y > alvo.posicao.y)
-                            teste.posicao.y -= 5;
-                        if (teste.posicao.x < alvo.posicao.x)
-                            teste.posicao.x += 5;
-                        if (teste.posicao.y < alvo.posicao.y){
-                            teste.posicao.y += 5;}
-                        teste.draw();}
-                    else {
-                        continuar = false;
-                    }}
-                
-        ;if(continuar){
-            
-            animate();
-        }}
+                this.animar(teste,alvo)
+               
+               
+    }
 }
+    animar(ataque,alvo){
+        let continuar = true;
         
+        const animacao = () => {
+        window.requestAnimationFrame(animacao);
+        if(this.isEnemy==false){
+            if (ataque.posicao.x < alvo.posicao.x || alvo.posicao.y < alvo.posicao.y) {
+                if (ataque.posicao.x > alvo.posicao.x)
+                    ataque.posicao.x -= 5;
+                if (ataque.posicao.y > alvo.posicao.y)
+                    ataque.posicao.y -= 5;
+                if (ataque.posicao.x < alvo.posicao.x)
+                    ataque.posicao.x += 5;
+                if (ataque.posicao.y < alvo.posicao.y){
+                    ataque.posicao.y += 5;}
+                ataque.draw();}
+            else {
+                continuar = false;
+            }
+        
+       };
+        
+     
+     if(this.isEnemy == true){
+        if (ataque.posicao.x > alvo.posicao.x || ataque.posicao.y < alvo.posicao.y) {
+            if (ataque.posicao.x < alvo.posicao.x)
+                ataque.posicao.x += 5;
+            if (ataque.posicao.y > alvo.posicao.y)
+                ataque.posicao.y -= 5;
+            if (ataque.posicao.x > alvo.posicao.x)
+                ataque.posicao.x -= 5;
+            if (ataque.posicao.y < alvo.posicao.y){
+                ataque.posicao.y += 5;}
+            ataque.draw();}
+        else {
+            continuar = false;
+        }
+     }
+    }
+    
+    if(continuar){
+        animacao()
+}
+}
+       
     
     desenhar(){
         context.fiiStyle='rgba(255, 0, 0, 0)'
@@ -92,4 +121,4 @@ class monstros extends Sprite{
   getVida(){
     return this.vida;
   }
-}
+    }
