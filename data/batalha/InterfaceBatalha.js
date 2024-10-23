@@ -21,7 +21,7 @@ inimigoDerrotado(name){
     context.fillRect(0,0,1020,550);
     context.fillStyle='black';
     context.font = '30px Arial';
-    context.fillText(name+' Derrotado', 400, 200);
+    context.fillText(emby.nome+' Derrotado', 400, 200);
 }
 
 drawBarraDeAtaques(){

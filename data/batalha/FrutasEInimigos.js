@@ -47,7 +47,7 @@ class monstros extends Sprite{
         switch(ataque.nome){
             case 'Fireball':
                 const testeImage=new Image();
-                testeImage.src='/imagens/fireBall.jpg';
+                testeImage.src='/imagens/Fireball.png';
                 const teste = new Sprite({
                     posicao: {
                     x:this.posicao.x,
@@ -55,15 +55,30 @@ class monstros extends Sprite{
                     },
                     image : testeImage,
                     frames:{
-                        max:6,
+                        max:12,
                         hold:10
-                    },sprites:4,
+                    },sprites:10,
                     animate:true,
                     rotation
                 })
-                this.animar(teste,alvo)
-               
-               
+                this.animar(teste,alvo);break
+            case 'Waterfall':
+                const aguaImage= new Image();
+                aguaImage.src ='/imagens/WaterFall.png'
+                const agua = new Sprite({
+                    posicao: {
+                        x:this.posicao.x,
+                        y:this.posicao.y,
+                        },
+                        image : aguaImage,
+                        frames:{
+                            max:7,
+                            hold:20
+                        },sprites: 1,
+                        animate:true,
+                        rotation                   
+                })
+                this.animar(agua,alvo)
     }
 }
     animar(ataque,alvo){

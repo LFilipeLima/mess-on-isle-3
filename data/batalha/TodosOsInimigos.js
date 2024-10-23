@@ -8,8 +8,8 @@ Dividir o inimigo em 3 niveis cada nivel mais forte
         mosquito:{
            posicao:{x:800,y:100},
             image:{src:'monstros/draggleSprite.png'} , //trocar para um mosquito  
-            frames:{max:4,hold:30},
-            sprites:22, //hold igual a tempo de cada frame]
+            frames:{max:4,hold:30}, //hold é o tempo que fica o frame
+            sprites:22, 
             animate:true,
             isEnemy:true, //todo inimigo é true!!!
             name:'mosquito',
