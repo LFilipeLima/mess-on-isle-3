@@ -14,34 +14,54 @@ const battleBackground = new Sprite({
     image: backgroundBattleIMG})
 
 const draggle = new monstros(inimigos.mosquito);
-const emby = new monstros(frutas.maca);
+const emby = new monstros(frutas[0].maca);
 var renderizarSprites = [draggle,emby];
 
 const batalhaUI = new interfaceBatalha(ataque.Fireball.nome,ataque.Waterfall.nome,
-    ataque.Fireball.dano,ataque.Waterfall.dano,emby.getVida());
+    ataque.Fireball.dano,ataque.Waterfall.dano,emby.getVida(),draggle.getVida());
 
-
+var vezAtaqueInimigo = false;
+var ataquePlayer = true
 
 function battleLoop() {
     window.requestAnimationFrame(battleLoop);
     battleBackground.draw();
     batalhaUI.drawBarraDeAtaques();
-    batalhaUI.drawBarraDeVida();batalhaUI.drawBarraDeVidaInimiga()
+    batalhaUI.drawBarraDeVida();
+    batalhaUI.drawBarraDeVidaInimiga()
     emby.draw();
     draggle.draw();
-    
+
+    verifacaVitoraDerrota();
+
 }
+function verifacaVitoraDerrota(){
+    if(draggle.getVida()<=0){
+        batalhaUI.inimigoDerrotado();
+   
+
+    }
+    if(emby.getVida()<=0){
+        batalhaUI.personagemDerrotado();
+   
+}}
 window.addEventListener('click',(e)=>{
     const x = e.clientX;
     const y = e.clientY;
-    if(x>225 && x<500 && y>450 && y<550){//primeiro ataque
+    if(x>225 && x<500 && y>450 && y<550 && ataquePlayer==true){//primeiro ataque
         emby.ataque(emby.ataques[0],draggle,4);
+        draggle.setVida(draggle.getVida()-emby.ataques[0].dano);
         batalhaUI.vidaInimiga -= emby.ataques[0].dano
-        ataqueInimigo();
+        vezAtaqueInimigo = true;
+        ataquePlayer = false; 
+        setTimeout(ataqueInimigo(),500);
         }
-    if(x>484&&x<738&&y>450&&y<550){//primeiro ataque
+    if(x>484&&x<738&&y>450&&y<550 && ataquePlayer==true){//segundo  ataque
             emby.ataque(emby.ataques[1],draggle,4);
+            draggle.setVida(draggle.getVida()-emby.ataques[1].dano);
             batalhaUI.vidaInimiga -= emby.ataques[1].dano
+            vezAtaqueInimigo = true;
+            ataquePlayer = false;
             ataqueInimigo();
             }
     })
@@ -49,7 +69,7 @@ window.addEventListener('mousemove',(e)=>{
     const x = e.clientX;
     const y = e.clientY;
 
-    if(x>225 && x<478 && y>450 && y<550 ){//primeiro ataque
+    if(x>225 && x<478 && y>450 && y<550  ){//primeiro ataque
         batalhaUI.ataque2 = 'blue'
         batalhaUI.ataque1 = 'Yellow'
         batalhaUI.nomeDano=""
@@ -70,8 +90,11 @@ window.addEventListener('mousemove',(e)=>{
 
 function ataqueInimigo(){
     let ataque = Math.floor(Math.random()*2)
-   draggle.ataque(draggle.ataques[ataque],emby,4)
+   draggle.ataque(draggle.ataques[draggle.ataque.length],emby,4)
+   emby.setVida(emby.getVida()-draggle.ataques[ataque].dano)
    batalhaUI.vida -=draggle.ataques[ataque].dano
+    ataquePlayer = true;
+    vezAtaqueInimigo = false;
 }
 
 

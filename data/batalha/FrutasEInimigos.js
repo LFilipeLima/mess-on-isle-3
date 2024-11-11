@@ -42,7 +42,7 @@ class monstros extends Sprite{
 }
 
 
-    ataque(ataque,alvo,numeroDeSprites){
+    ataque(ataque,alvo,){
         let rotation =1;
         switch(ataque.nome){
             case 'Fireball':
@@ -78,7 +78,26 @@ class monstros extends Sprite{
                         animate:true,
                         rotation                   
                 })
-                this.animar(agua,alvo)
+                this.animar(agua,alvo);break
+            case 'purple':
+                const venenoImage = new Image();
+                venenoImage.src = 'imagens/purpleAtaque.png'
+                const veneno = new Sprite({
+                    posicao: {
+                        x:this.posicao.x,
+                        y:this.posicao.y,
+                        },
+                        image : venenoImage,
+                        frames:{
+                            max:4,
+                            hold:40
+                        },sprites: 1,
+                        animate:true,
+                        rotation                   
+                }) 
+                this.animar(veneno,alvo);break
+                
+               
     }
 }
     animar(ataque,alvo){
@@ -136,4 +155,7 @@ class monstros extends Sprite{
   getVida(){
     return this.vida;
   }
+setVida(vida){
+        this.vida=vida;
+    }
     }
