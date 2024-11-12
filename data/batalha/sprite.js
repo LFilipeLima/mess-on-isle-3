@@ -74,7 +74,7 @@ class Sprite {
   
       context.restore()
   
-      if (!this.animate) return
+      if (!this.animate) return //se for frame unico não anima
   
       if (this.frames.max > 1) {
         this.frames.elapsed++

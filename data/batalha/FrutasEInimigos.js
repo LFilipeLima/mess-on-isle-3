@@ -42,7 +42,23 @@ class monstros extends Sprite{
 }
 
 
-    ataque(ataque,alvo,){
+    ataque(ataque){
+        let xAtaque=0;
+        let yAtaque=0;
+        
+        let alvo={x:0,y:0}
+        if(this.isEnemy==false){
+            xAtaque=300;
+            yAtaque=300;
+            alvo.x=800;
+            alvo.y=100;
+        }
+        else{
+            xAtaque=800;
+            yAtaque=100;
+            alvo.x=300;
+            alvo.y=300;
+        }
         let rotation =1;
         switch(ataque.nome){
             case 'Fireball':
@@ -50,8 +66,8 @@ class monstros extends Sprite{
                 testeImage.src='/imagens/Fireball.png';
                 const teste = new Sprite({
                     posicao: {
-                    x:this.posicao.x,
-                    y:this.posicao.y,
+                    x:xAtaque,
+                    y:yAtaque,
                     },
                     image : testeImage,
                     frames:{
@@ -67,8 +83,8 @@ class monstros extends Sprite{
                 aguaImage.src ='/imagens/WaterFall.png'
                 const agua = new Sprite({
                     posicao: {
-                        x:this.posicao.x,
-                        y:this.posicao.y,
+                        x:xAtaque,
+                        y:yAtaque,
                         },
                         image : aguaImage,
                         frames:{
@@ -81,11 +97,11 @@ class monstros extends Sprite{
                 this.animar(agua,alvo);break
             case 'purple':
                 const venenoImage = new Image();
-                venenoImage.src = 'imagens/purpleAtaque.png'
+                venenoImage.src = '/imagens/purpleAtaque.png'
                 const veneno = new Sprite({
                     posicao: {
-                        x:this.posicao.x,
-                        y:this.posicao.y,
+                        x:xAtaque,
+                        y:yAtaque,
                         },
                         image : venenoImage,
                         frames:{
@@ -106,14 +122,14 @@ class monstros extends Sprite{
         const animacao = () => {
         window.requestAnimationFrame(animacao);
         if(this.isEnemy==false){
-            if (ataque.posicao.x < alvo.posicao.x || alvo.posicao.y < alvo.posicao.y) {
-                if (ataque.posicao.x > alvo.posicao.x)
+            if (ataque.posicao.x < alvo.x || ataque.posicao.y < alvo.y) {
+                if (ataque.posicao.x > alvo.x)
                     ataque.posicao.x -= 5;
-                if (ataque.posicao.y > alvo.posicao.y)
+                if (ataque.posicao.y > alvo.y)
                     ataque.posicao.y -= 5;
-                if (ataque.posicao.x < alvo.posicao.x)
+                if (ataque.posicao.x < alvo.x)
                     ataque.posicao.x += 5;
-                if (ataque.posicao.y < alvo.posicao.y){
+                if (ataque.posicao.y < alvo.y){
                     ataque.posicao.y += 5;}
                 ataque.draw();}
             else {
@@ -124,18 +140,19 @@ class monstros extends Sprite{
         
      
      if(this.isEnemy == true){
-        if (ataque.posicao.x > alvo.posicao.x || ataque.posicao.y < alvo.posicao.y) {
-            if (ataque.posicao.x < alvo.posicao.x)
+        if (ataque.posicao.x > alvo.x || ataque.posicao.y < alvo.y) {
+            if (ataque.posicao.x < alvo.x)
                 ataque.posicao.x += 5;
-            if (ataque.posicao.y > alvo.posicao.y)
+            if (ataque.posicao.y > alvo.y)
                 ataque.posicao.y -= 5;
-            if (ataque.posicao.x > alvo.posicao.x)
+            if (ataque.posicao.x > alvo.x)
                 ataque.posicao.x -= 5;
-            if (ataque.posicao.y < alvo.posicao.y){
+            if (ataque.posicao.y < alvo.y){
                 ataque.posicao.y += 5;}
             ataque.draw();}
         else {
             continuar = false;
+            
         }
      }
     }

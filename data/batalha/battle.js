@@ -12,13 +12,12 @@ const battleBackground = new Sprite({
         y: 0
     },
     image: backgroundBattleIMG})
-
-const draggle = new monstros(inimigos.mosquito);
-const emby = new monstros(frutas[0].maca);
+//gera inimigo e player randoms
+const draggle = new monstros(vetorInimigos[Math.floor(Math.random()*vetorInimigos.length)]);
+const emby = new monstros(vetorFrutas[Math.floor(Math.random()*vetorFrutas.length)]);
 var renderizarSprites = [draggle,emby];
-
-const batalhaUI = new interfaceBatalha(ataque.Fireball.nome,ataque.Waterfall.nome,
-    ataque.Fireball.dano,ataque.Waterfall.dano,emby.getVida(),draggle.getVida());
+const batalhaUI = new interfaceBatalha(emby.ataques[0].nome,emby.ataques[1].nome,
+    emby.ataques[0].dano,emby.ataques[1].dano,emby.getVida(),draggle.getVida());
 
 var vezAtaqueInimigo = false;
 var ataquePlayer = true
@@ -89,8 +88,8 @@ window.addEventListener('mousemove',(e)=>{
 })
 
 function ataqueInimigo(){
-    let ataque = Math.floor(Math.random()*2)
-   draggle.ataque(draggle.ataques[draggle.ataque.length],emby,4)
+    let ataque = Math.floor(Math.random()*draggle.ataques.length);
+   draggle.ataque(draggle.ataques[ataque],emby,4)
    emby.setVida(emby.getVida()-draggle.ataques[ataque].dano)
    batalhaUI.vida -=draggle.ataques[ataque].dano
     ataquePlayer = true;
