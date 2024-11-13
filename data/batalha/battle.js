@@ -47,7 +47,8 @@ function verifacaVitoraDerrota(){
 window.addEventListener('click',(e)=>{
     const x = e.clientX;
     const y = e.clientY;
-    if(x>225 && x<500 && y>450 && y<550 && ataquePlayer==true){//primeiro ataque
+    console.log(x)
+    if(x>210 && x<693 && y>450 && y<550 && ataquePlayer==true){//primeiro ataque
         emby.ataque(emby.ataques[0],draggle,4);
         draggle.setVida(draggle.getVida()-emby.ataques[0].dano);
         batalhaUI.vidaInimiga -= emby.ataques[0].dano
@@ -55,7 +56,7 @@ window.addEventListener('click',(e)=>{
         ataquePlayer = false; 
         setTimeout(ataqueInimigo(),500);
         }
-    if(x>484&&x<738&&y>450&&y<550 && ataquePlayer==true){//segundo  ataque
+    if(x>709&&x<961&&y>450&&y<970 && ataquePlayer==true){//segundo  ataque
             emby.ataque(emby.ataques[1],draggle,4);
             draggle.setVida(draggle.getVida()-emby.ataques[1].dano);
             batalhaUI.vidaInimiga -= emby.ataques[1].dano
@@ -68,13 +69,13 @@ window.addEventListener('mousemove',(e)=>{
     const x = e.clientX;
     const y = e.clientY;
 
-    if(x>225 && x<478 && y>450 && y<550  ){//primeiro ataque
+    if(x>210 && x<693 && y>450 && y<550 && ataquePlayer==true){//primeiro ataque
         batalhaUI.ataque2 = 'blue'
         batalhaUI.ataque1 = 'Yellow'
         batalhaUI.nomeDano=""
         batalhaUI.nomeDano=ataque.Fireball.dano;
     }
-    if(x>484&&x<738&&y>450&&y<550) { //segundo ataque
+    if(x>709&&x<970&&y>450&&y<550 && ataquePlayer==true) { //segundo ataque
         batalhaUI.ataque1 = 'red'
         batalhaUI.ataque2 = 'Yellow'
         batalhaUI.nomeDano=""
