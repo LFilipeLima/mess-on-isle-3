@@ -14,7 +14,7 @@ Dividir o inimigo em 3 niveis cada nivel mais forte
             isEnemy:true, //todo inimigo é true!!!
             name:'mosquito',
             attacks:[ataque.Waterfall,ataque.Fireball,ataque.purple] ,
-            nivel:3,
+            nivel:2,
         },
         //inserir a partir da daqui:
         vegano:{
@@ -25,9 +25,20 @@ Dividir o inimigo em 3 niveis cada nivel mais forte
             animate:false,
             isEnemy:true,
             name:'Veganos Unidos',
-            attacks:[ataque.Waterfall,ataque.Fireball,ataque.purple],
-            nivel:1,
+            attacks:[ataque.Waterfall,ataque.purple],
+            nivel:2
         },
+        /*draglleYe:{
+            posicao:{x:800,y:100},
+            image:{src:'/monstros/dragonYellow.png'},
+            frames:{max:4,hold:30},
+            sprites:16,
+            animate:true,
+            isEnemy:true,
+            name:'Amarelo',
+            attacks:[ataque.purple,ataque.Waterfall],
+            nivel:2,
+        }*/
      }
     const vetorInimigos=[inimigos.mosquito,inimigos.vegano]
 

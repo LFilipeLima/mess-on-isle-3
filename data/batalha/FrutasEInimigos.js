@@ -28,18 +28,9 @@ class monstros extends Sprite{
             this.vida=300;
         else
             this.vida=800;
-        //ehInimigo = isEnemy; //checar se é realmente um inimigo;
         this.nome = name;
         this.ataques = attacks;
       }
-     Derrotado() {
-        if(vida<=0){
-           gsap.to(this.posicao,{y:this.posicao.y+20})  
-           gsap.to(this,{opacity:0}) //inimigo 'some'         
-            return true;}//quando for true usar a classe de interface da batalha
-        else
-            return false;
-}
 
 
     ataque(ataque){

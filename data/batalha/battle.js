@@ -47,7 +47,7 @@ function verifacaVitoraDerrota(){
 window.addEventListener('click',(e)=>{
     const x = e.clientX;
     const y = e.clientY;
-    console.log(x)
+   
     if(x>210 && x<693 && y>450 && y<550 && ataquePlayer==true){//primeiro ataque
         emby.ataque(emby.ataques[0],draggle,4);
         draggle.setVida(draggle.getVida()-emby.ataques[0].dano);
@@ -75,13 +75,13 @@ window.addEventListener('mousemove',(e)=>{
         batalhaUI.nomeDano=""
         batalhaUI.nomeDano=ataque.Fireball.dano;
     }
-    if(x>709&&x<970&&y>450&&y<550 && ataquePlayer==true) { //segundo ataque
+    if(x>709&&x<961&&y>450&&y<970 && ataquePlayer==true) { //segundo ataque
         batalhaUI.ataque1 = 'red'
         batalhaUI.ataque2 = 'Yellow'
         batalhaUI.nomeDano=""
         batalhaUI.nomeDano=ataque.Waterfall.dano;
 }
-    if(x<210|| x>739){ //nao está nenhum selecionado
+    if(x<210|| x>1000){ //nao está nenhum selecionado
         batalhaUI.ataque1 = 'red'
         batalhaUI.ataque2 = 'blue'
         batalhaUI.nomeDano=""

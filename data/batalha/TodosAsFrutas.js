@@ -8,8 +8,8 @@ const frutas=
             animate:true,
             isEnemy:false, //toda fruta é false!!!
             name:'maça',
-            attacks:[ataque.purple,ataque.Waterfall] ,
-            nivel:1
+            attacks:[ataque.purple,ataque.Fireball] ,
+            nivel:2
         },
         //inserir a partir da daqui:
         banana:{
@@ -21,7 +21,7 @@ const frutas=
             isEnemy:false, //toda fruta é false!!!
             name:'banana',
             attacks:[ataque.Fireball,ataque.Waterfall] ,
-            nivel:3
+            nivel:2
         },
     }
 const vetorFrutas=[frutas.maca,frutas.banana]
