@@ -28,17 +28,6 @@ Dividir o inimigo em 3 niveis cada nivel mais forte
             attacks:[ataque.Waterfall,ataque.Fireball,ataque.purple],
             nivel:1,
         },
-        evilVegan:{
-            posicao:{x:700,y:-40},
-            image:{src:'/monstros/evilVegan.png'},
-            frames:{max:1,hold:1},
-            sprites:1,
-            animate:false,
-            isEnemy:true,
-            name:'Veganos Unidos',
-            attacks:[ataque.Waterfall,ataque.Fireball,ataque.purple],
-            nivel:2,
-        }
      }
-    const vetorInimigos=[inimigos.mosquito,inimigos.vegano,inimigos.evilVegan]
+    const vetorInimigos=[inimigos.mosquito,inimigos.vegano]
 
