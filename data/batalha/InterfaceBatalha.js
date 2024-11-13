@@ -33,7 +33,7 @@ inimigoDerrotado(){
     window.addEventListener('click',(e)=>{
         const x = e.clientX;
         const y = e.clientY;
-        if(x>700 && x<800 && y>100 && y<300){
+        if(x>850 && x<1500 && y>100 && y<300){
             window.location.reload();
         }
     })
@@ -53,7 +53,8 @@ personagemDerrotado(){
     window.addEventListener('click',(e)=>{
         const x = e.clientX;
         const y = e.clientY;
-        if(x>700 && x<800 && y>100 && y<300){
+        console.log(x)
+        if(x>850 && x<1500 && y>100 && y<300){
             window.location.reload();
         }
     })
